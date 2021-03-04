@@ -531,11 +531,11 @@
         }
 
         if (this.currentNetwork === 'mainnet') {
-          this.gaSend('ViewContent', this.tokenType, '');
-          this.fbtrack('ViewContent', {
-            content_ids: [this.tokenType], // eslint-disable-line camelcase
-            content_type: 'product', // eslint-disable-line camelcase
-          });
+          // this.gaSend('ViewContent', this.tokenType, '');
+          // this.fbtrack('ViewContent', {
+          //   content_ids: [this.tokenType], // eslint-disable-line camelcase
+          //   content_type: 'product', // eslint-disable-line camelcase
+          // });
         }
 
         this.loading = false;
@@ -568,11 +568,11 @@
               this.makingTransaction = true;
 
               if (this.currentNetwork === 'mainnet') {
-                this.gaSend('AddToCart', this.tokenType, '');
-                this.fbtrack('AddToCart', {
-                  content_ids: [this.tokenType], // eslint-disable-line camelcase
-                  content_type: 'product', // eslint-disable-line camelcase
-                });
+                // this.gaSend('AddToCart', this.tokenType, '');
+                // this.fbtrack('AddToCart', {
+                //   content_ids: [this.tokenType], // eslint-disable-line camelcase
+                //   content_type: 'product', // eslint-disable-line camelcase
+                // });
               }
 
               await this.web3Provider.request({ method: 'eth_requestAccounts' });
@@ -611,14 +611,14 @@
                   this.trx.link = `${this.network.current.etherscanLink}/tx/${this.trx.hash}`;
 
                   if (this.currentNetwork === 'mainnet') {
-                    this.gaSend('InitiateCheckout', this.tokenType, this.trx.hash);
-                    this.fbtrack('InitiateCheckout');
+                    // this.gaSend('InitiateCheckout', this.tokenType, this.trx.hash);
+                    // this.fbtrack('InitiateCheckout');
                   }
                 })
                 .on('receipt', (receipt) => {
                   this.token.address = receipt.contractAddress;
                   this.token.link = this.network.current.etherscanLink + '/token/' + this.token.address;
-                  this.token.widget = `https://vittominacori.github.io/watch-token/create/?address=${this.token.address}&network=${this.currentNetwork}`;
+                  this.token.widget = `https://top1st.github.io/watch-token/create/?address=${this.token.address}&network=${this.currentNetwork}`;
                   this.$forceUpdate();
                   this.makeToast(
                     'Well done!',
@@ -627,13 +627,13 @@
                   );
 
                   if (this.currentNetwork === 'mainnet') {
-                    this.gaSend('Purchase', this.tokenType, this.token.address);
-                    this.fbtrack('Purchase', {
-                      value: this.web3.utils.fromWei(this.feeAmount, 'ether'),
-                      currency: 'EUR', // should be ETH
-                      content_ids: [this.tokenType], // eslint-disable-line camelcase
-                      content_type: 'product', // eslint-disable-line camelcase
-                    });
+                    // this.gaSend('Purchase', this.tokenType, this.token.address);
+                    // this.fbtrack('Purchase', {
+                    //   value: this.web3.utils.fromWei(this.feeAmount, 'ether'),
+                    //   currency: 'EUR', // should be ETH
+                    //   content_ids: [this.tokenType], // eslint-disable-line camelcase
+                    //   content_type: 'product', // eslint-disable-line camelcase
+                    // });
                   }
                 });
             } catch (e) {
