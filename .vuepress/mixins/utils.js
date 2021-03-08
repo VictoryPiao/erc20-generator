@@ -45,7 +45,7 @@ export default {
       try {
         ga('send', 'event', category, action, label);
       } catch (e) {
-        console.log('ga send', { category, action, label });
+        console.log('ga send', { category, action, label }, e);
       }
     },
     fbtrack (eventName, eventParams) {
